@@ -33,8 +33,8 @@ class TurtleController(Node):
         position_x = msg.pose.pose.position.x
         position_y = msg.pose.pose.position.y
 
-        ang = msg.pose.pose.orientation
-        _, _, self.theta = euler_from_quaternion([ang.x, ang.y, ang.z, ang.w])
+        angle = msg.pose.pose.orientation
+        _, _, self.theta = euler_from_quaternion([angle.x, angle.y, angle.z, angle.w])
 
         # Updating actual pose
         self.actual_pose_x = position_x
