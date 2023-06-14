@@ -1,0 +1,16 @@
+//This is your Prisma schema file
+datasource db {
+    provider = "sqlite"
+    url      = "file:database.db"
+}
+//Create a model for each table in your database
+generator db {
+    provider  = "prisma-client-py"
+    interface = "sync"
+}
+// Define Imagea model
+model Images {
+    id          Int      @id @default(autoincrement())
+    image      String 
+    createdAt   DateTime @default(now())
+}
