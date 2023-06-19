@@ -1,17 +1,51 @@
-# Semana 05
+# Semana 07
 
 ### Links:
 
-Video: [https://drive.google.com/file/d/1GWr_yMHBby3RLEVzIpaB5l9KLhjZo4OH/view?usp=share_link](https://drive.google.com/file/d/1GWr_yMHBby3RLEVzIpaB5l9KLhjZo4OH/view?usp=share_link)
+Video: [https://drive.google.com/file/d/12U7RQCvP541X5ZE3QjppgBGkhboeXkuQ/view?usp=sharing](https://drive.google.com/file/d/12U7RQCvP541X5ZE3QjppgBGkhboeXkuQ/view?usp=sharing)
 
-Notebook: [https://colab.research.google.com/drive/16dx94nR-vl7ccJhxRIZRI7oDtVbxk7gd?usp=sharing](https://colab.research.google.com/drive/16dx94nR-vl7ccJhxRIZRI7oDtVbxk7gd?usp=sharing)
+### Para rodar
+
+#### Front-end:
+
+Abra um terminal, navegue até a pasta front-end e rode o comando:
+
+``npm i``
+
+``npm run dev``
+
+#### Back-end:
+
+Abra um novo terminal, navegue até a pasta back-end e rode o comando:
+
+``pip install prima``
+
+``pip install sanic``
+
+``pip install ultralytics``
+
+``prisma generate``
+
+``prisma db push``
+
+``python app.py``
+
+#### Embedded
+
+Abra um novo terminal, navegue até a pasta embedded e rode o comando:
+
+``python app.py``
+
+
+Após rodar o embedded, o sistema todo estará funcionando, salvando e enviados as imagens que vem da camera.
 
 ### Descrição:
 
-Para a elaboração da atividade desta semana, foi necessário aplicar dois tipos de conhecimento vistos: a utilização do OpenCV e o YOLO.
+Para a elaboração da atividade desta semana, foi necessário aplicar dois tipos de conhecimento: a utilização do OpenCV e o YOLO, além do conteúdo explicado em sala.
 
-Para começar, criei um arquivo no Colab para ter um ambiente de trabalho melhor. A primeira etapa foi criar uma célula para verificar o acesso à GPU e usá-la. Em seguida, fiz a instalação e importação do YOLO, pois ele será responsável por treinar e criar nosso modelo de predição. Para confirmar se a biblioteca estava funcionando, criei uma parte de teste para detecção de cachorros e verifiquei as métricas do modelo.
+Criei um bucket na S3 da AWS para armazenar as imagens, seguindo a estrutura previamente planejada. A única alteração necessária foi obter o resultado da imagem analisada pelo modelo de detecção de rachaduras e enviá-lo para o bucket. Para realizar essa tarefa, utilizei a biblioteca boto3 do Python, que facilita o processo de envio das imagens. Dessa forma, a imagem é inicialmente armazenada em uma pasta local, em seguida é aberta e enviada para o bucket e, por fim, é excluída, comportando-se como um arquivo temporário. A path da imagem no bucket é armazenada em uma string na tabela do banco de dados.
 
-Após a confirmação de funcionamento, comecei a trabalhar na importação do dataset do Roboflow de rachaduras (crack). Como tinha visto que o teste anterior estava bom, utilizei-o como base para o de rachaduras. Realizei o treinamento e, em seguida, dei uma olhada nas métricas para verificar se havia necessidade de melhorar (no caso, não havia) e vi os resultados obtidos.
+Assim, concluo a entrega da atividade ponderada desta semana.
 
-Por fim, criei um arquivo main.py, onde utilizei o OpenCV para acessar a câmera e utilizar o modelo na detecção de rachaduras durante o vídeo.
+
+![1687182708443](image/README/1687182708443.png)
